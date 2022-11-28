@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Match Game</title>
+    <script>
+        function randomize() {
+            let images=["cat.jpg", "clover.webp", "diamond.png", "dog.png", "fox.png", "panda.jpg", "spade.jpeg", "sun.jpg"];
+            var tile1 = document.getElementById("tile1");
+            console.log(tile1);
+            tile1=tile1.src.replace("images/" + images[0]);
+            console.log(tile1);
+        }
+    </script>
+</head>
+<body>
+    <div class="tile"">
+        <img id="tile1" src="images/spade.jpeg">
+    </div>
+    <button onclick="randomize();">hi</button>
+</body>
+</html>
