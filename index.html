@@ -7,19 +7,86 @@
     <link rel="stylesheet" href="styles.css">
     <title>Match Game</title>
     <script>
-        function randomize() {
-            let images=["cat.jpg", "clover.webp", "diamond.png", "dog.png", "fox.png", "panda.jpg", "spade.jpeg", "sun.jpg"];
+        function initialize() {
             var tile1 = document.getElementById("tile1");
-            console.log(tile1);
-            tile1=tile1.src.replace("images/" + images[0]);
-            console.log(tile1);
+            var tile2 = document.getElementById("tile2");
+            var tile3 = document.getElementById("tile3");
+            var tile4 = document.getElementById("tile4");
+            var tile5 = document.getElementById("tile5");
+            var tile6 = document.getElementById("tile6");
+            var tile7 = document.getElementById("tile7");
+            var tile8 = document.getElementById("tile8");
+            var tile9 = document.getElementById("tile9");
+            var tile10 = document.getElementById("tile10");
+            var tile11 = document.getElementById("tile11");
+            var tile12 = document.getElementById("tile12");
+            var tile13 = document.getElementById("tile13");
+            var tile14 = document.getElementById("tile14");
+            var tile15 = document.getElementById("tile15");
+            var tile16 = document.getElementById("tile16");
+        }
+        function randomize() {
+            let images=["cat.jpg", "clover.webp", "diamond.png", "dog.png", 
+                            "fox.png", "panda.jpg", "spade.jpeg", "sun.jpg", 
+                            "cat.jpg", "clover.webp", "diamond.png", "dog.png", 
+                            "fox.png", "panda.jpg", "spade.jpeg", "sun.jpg"];
+            let i = 0;
+            let finalImages=[];
+            while (images.length > 0) {
+                let random = parseInt(Math.random() * images.length);
+                finalImages+=images[random];
+                images=images.splice(random);
+            }
+            
+            console.log("Images: " + images);
+            console.log("finalImages: " + finalImages);
+            tile1.src="images/" + finalImages[0];
+            tile2.src="images/" + finalImages[1];
+            tile3.src="images/" + finalImages[2];
+            tile4.src="images/" + finalImages[3];
+
+            tile5.src="images/" + finalImages[4];
+            tile5.src="images/" + finalImages[5];
+            tile7.src="images/" + finalImages[6];
+            tile8.src="images/" + finalImages[7];
+
+            tile9.src="images/" + finalImages[8];
+            tile10.src="images/" + finalImages[9];
+            tile11.src="images/" + finalImages[10];
+            tile12.src="images/" + finalImages[11];
+
+            tile13.src="images/" + finalImages[12];
+            tile14.src="images/" + finalImages[13];
+            tile15.src="images/" + finalImages[14];
+            tile16.src="images/" + finalImages[15];
+
         }
     </script>
 </head>
-<body>
-    <div class="tile"">
-        <img id="tile1" src="images/spade.jpeg">
+<body onload="initialize();">
+    <div class="container">
+        <img class="tile" id="tile1" src="images/clover.webp ">
+        <img class="tile" id="tile2" src="images/sun.jpg ">
+        <img class="tile" id="tile3" src="images/spade.jpeg ">
+        <img class="tile" id="tile4" src="images/panda.jpg ">
+    
+        <img class="tile" id="tile5" src="images/dog.png ">
+        <img class="tile" id="tile6" src="images/clover.webp ">
+        <img class="tile" id="tile7" src="images/fox.png ">
+        <img class="tile" id="tile8" src="images/fox.png ">
+    
+        <img class="tile" id="tile9" src="images/spade.jpeg ">
+        <img class="tile" id="tile10" src="images/sun.jpg ">
+        <img class="tile" id="tile11" src="images/diamond.png ">
+        <img class="tile" id="tile12" src="images/cat.jpg ">
+        
+        <img class="tile" id="tile13" src="images/panda.jpg ">
+        <img class="tile" id="tile14" src="images/diamond.png ">
+        <img class="tile" id="tile15" src="images/cat.jpg ">
+        <img class="tile" id="tile16" src="images/dog.png ">
     </div>
-    <button onclick="randomize();">hi</button>
+    
+
+    <button onclick="randomize();">randomize</button>
 </body>
 </html>
