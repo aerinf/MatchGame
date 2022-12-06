@@ -24,6 +24,7 @@
             var tile14 = document.getElementById("tile14");
             var tile15 = document.getElementById("tile15");
             var tile16 = document.getElementById("tile16");
+            var tutorial = document.getElementById("tutorial");
             scoreNum = 0;
             lastClick="";
             tile1.style.display="none";
@@ -79,7 +80,7 @@
             tile16.src="images/" + finalImages[15];
         }
         function flip(t) {
-            if (lastClick.id!=t.id) {
+            if (t.style.display=="none") {
                 console.log("lastClick: " + lastClick);
                 console.log("t: " + t);
                 if (scoreNum%2==0) {
@@ -106,11 +107,21 @@
                     iterateScore();
                 }
             }
-            /*t.className="hidden"
-            t.style.display="none";
-            t.className="";
-            iterateScore();
-            */
+            gameOver();
+        }
+        function gameOver() {
+            if (tile1.style.display=="inline" && tile2.style.display=="inline" && tile3.style.display=="inline" && tile4.style.display=="inline" && tile5.style.display=="inline" && tile6.style.display=="inline" && tile7.style.display=="inline" && tile8.style.display=="inline" && tile9.style.display=="inline" && tile10.style.display=="inline" && tile11.style.display=="inline" && tile12.style.display=="inline" && tile13.style.display=="inline" && tile14.style.display=="inline" && tile15.style.display=="inline" && tile16.style.display=="inline") 
+            {
+                if (scoreNum==16) {
+                    tutorial.innerHTML="Wow, perfect score!"
+                }
+                else if (scoreNum < 30) {
+                    tutorial.innerHTML="Good score!"
+                }
+                else {
+                    tutorial.innerHTML=scorenum + " clicks? Try to do better next time."
+                }
+            }
         }
         function iterateScore() {
             scoreNum++;
@@ -152,6 +163,7 @@
             tile16.className="";
             scoreNum = 0;
             document.getElementById("score").innerHTML = "Clicks: " + scoreNum;
+            tutorial.innerHTML="Click on a tile to flip it over. Then click on another. If they match, they'll stay revealed, but if they don't, they'll flip back over. The game ends when all tiles are revealed. Try to keep your score low!"
         }
     </script>
 </head>
@@ -159,9 +171,9 @@
     <div class="flexContainer">
         <div class="container">
             <div class="tile" onclick="flip(tile1);"><img id="tile1" src="images/clover.webp"></div>
-            <div class="tile" onclick="flip(tile2);"><img id="tile2" src="images/sun.jpg "></div>
+            <div class="tile" onclick="flip(tile2);"><img id="tile2" src="images/sun.jpeg "></div>
             <div class="tile" onclick="flip(tile3);"><img id="tile3" src="images/spade.jpeg "></div>
-            <div class="tile" onclick="flip(tile4);"><img id="tile4" src="images/panda.jpg "></div>
+            <div class="tile" onclick="flip(tile4);"><img id="tile4" src="images/panda.jpeg "></div>
             
             <div class="tile" onclick="flip(tile5);"><img id="tile5" src="images/dog.png "></div>
             <div class="tile" onclick="flip(tile6);"><img id="tile6" src="images/clover.webp "></div>
@@ -169,11 +181,11 @@
             <div class="tile" onclick="flip(tile8);"><img id="tile8" src="images/fox.png "></div>
 
             <div class="tile" onclick="flip(tile9);"><img id="tile9" src="images/spade.jpeg "></div>
-            <div class="tile" onclick="flip(tile10);"><img id="tile10" src="images/sun.jpg "></div>
+            <div class="tile" onclick="flip(tile10);"><img id="tile10" src="images/sun.jpeg "></div>
             <div class="tile" onclick="flip(tile11);"><img id="tile11" src="images/diamond.png "></div>
             <div class="tile" onclick="flip(tile12);"><img id="tile12" src="images/cat.jpg "></div>
 
-            <div class="tile" onclick="flip(tile13);"><img id="tile13" src="images/panda.jpg "></div>
+            <div class="tile" onclick="flip(tile13);"><img id="tile13" src="images/panda.jpeg "></div>
             <div class="tile" onclick="flip(tile14);"><img id="tile14" src="images/diamond.png "></div>
             <div class="tile" onclick="flip(tile15);"><img id="tile15" src="images/cat.jpg "></div>
             <div class="tile" onclick="flip(tile16);"><img id="tile16" src="images/dog.png "></div>
@@ -187,7 +199,7 @@
     <div id="accoutrements">
         <div id="score">Clicks: 0</div>
         <button onclick="reset();">reset</button>
-        <button onclick="randomize();">randomize</button>
+        <button id="random" onclick="randomize();">randomize</button>
     </div>
 </body>
 </html>
