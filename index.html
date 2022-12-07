@@ -43,6 +43,7 @@
             tile14.style.display="none";
             tile15.style.display="none";
             tile16.style.display="none";
+            run = true;
         }
         function randomize() {
             let images=["cat.jpg", "clover.webp", "diamond.png", "dog.png", 
@@ -53,7 +54,7 @@
             let finalImages=[];
             while (images.length > 0) {
                 let random = parseInt(Math.random() * images.length);
-                finalImages+=images[random];
+                finalImages.push(images[random]);
                 images.splice(random, 1);
             }
             
@@ -65,7 +66,7 @@
             tile4.src="images/" + finalImages[3];
 
             tile5.src="images/" + finalImages[4];
-            tile5.src="images/" + finalImages[5];
+            tile6.src="images/" + finalImages[5];
             tile7.src="images/" + finalImages[6];
             tile8.src="images/" + finalImages[7];
 
@@ -78,11 +79,10 @@
             tile14.src="images/" + finalImages[13];
             tile15.src="images/" + finalImages[14];
             tile16.src="images/" + finalImages[15];
+            reset();
         }
         function flip(t) {
-            if (t.style.display=="none") {
-                console.log("lastClick: " + lastClick);
-                console.log("t: " + t);
+            if (t.style.display=="none"  && run) {
                 if (scoreNum%2==0) {
                     if (t.style.display=="none") {
                         t.style.display="inline";
@@ -92,7 +92,6 @@
                     }
                     lastClick=t.src;
                     lastObj=t;
-                    console.log(t.src);
                 }
                 else {
                     if (t.src==lastClick) {
@@ -100,9 +99,12 @@
                     }
                     else {
                         t.style.display="inline";
+                        run=false;
                         setTimeout(() => { 
                             t.style.display="none";
-                            lastObj.style.display="none"; }, 500);
+                            lastObj.style.display="none"; 
+                            run=true;
+                        }, 500);
                     }
                     iterateScore();
                 }
@@ -119,7 +121,7 @@
                     tutorial.innerHTML="Good score!"
                 }
                 else {
-                    tutorial.innerHTML=scorenum + " clicks? Try to do better next time."
+                    tutorial.innerHTML=scoreNum + " clicks? Try to do better next time."
                 }
             }
         }
@@ -128,7 +130,6 @@
             document.getElementById("score").innerHTML = "Clicks: " + scoreNum;
         }
         function reset() {
-            console.log(scoreNum);
             tile1.style.display="none";
             tile1.className="";
             tile2.style.display="none";
